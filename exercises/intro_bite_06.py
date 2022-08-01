@@ -52,10 +52,15 @@ def strip_vowels(text: Optional[str] = TEXT) -> Tuple[str, int]:
        of Python's new type hinting:
        https://docs.python.org/3/library/typing.html"""
 
+    vowels_list = [char for char in VOWELS]
     count = 0
-    for word in text:
-        word.replace('aeiou', '*')
-        count += 1
+    for char in [char.lower() for char in text]:
+        for vowel in vowels_list:
+            if char == vowel:
+                count += 1
+    replaced_text = TEXT.replace('a', '*').replace('e', '*').replace('i', '*').replace('o', '*').replace('u', '*')
+    return replaced_text, count
 
-    return
+
+print(strip_vowels())
 
