@@ -1,7 +1,8 @@
 import pytest
 
 from exercises.summation import summation
-from intro_bites_08_by_PyBites import BeltStats, ninja_belts, get_total_points
+from exercises.intro_bites_08_by_PyBites import BeltStats, ninja_belts, get_total_points
+from exercises.intro_bite_09_by_PyBites import get_workout_motd, INVALID_DAY, CHILL_OUT
 
 
 def test_summation():
@@ -12,6 +13,7 @@ def test_summation():
     assert summation(213) == 22791
 
 
+#   test for intro_bites_08_by_PyBites
 def test_get_total_points_given_belts():
     assert get_total_points(ninja_belts) == 2675
 
@@ -24,3 +26,24 @@ def test_get_total_points_more_belts():
     ninja_belts_updated = {**ninja_belts, **more_belts}
 
     assert get_total_points(ninja_belts_updated) == 6475
+
+
+#   tests for intro_bite_09_by_PyBites
+@pytest.mark.parametrize("day, expected", [
+    ('Monday', 'Go train Chest+biceps'),
+    ('monday', 'Go train Chest+biceps'),
+    ('Tuesday', 'Go train Back+triceps'),
+    ('TuEsdAy', 'Go train Back+triceps'),
+    ('Wednesday', 'Go train Core'),
+    ('wednesdaY', 'Go train Core'),
+    ('Thursday', 'Go train Legs'),
+    ('Friday', 'Go train Shoulders'),
+    ('Saturday', CHILL_OUT),
+    ('Sunday', CHILL_OUT),
+    ('sundAy', CHILL_OUT),
+    ('nonsense', INVALID_DAY),
+    ('monday2', INVALID_DAY),
+])
+def test_get_workout_valid_case_insensitive_dict_lookups(day, expected):
+    assert get_workout_motd(day) == expected
+
