@@ -15,7 +15,6 @@ def max_sequence(arr):
         for idx in range(arr.index(elem) + 1, len(arr)):
             elem += arr[idx]
             list_of_sum.append(elem)
-            print(elem)
 
     if all(i < 0 for i in arr) or not list_of_sum:
         return 0
