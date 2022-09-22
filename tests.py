@@ -1,5 +1,6 @@
 import pytest
 
+from exercises import calculating_with_functions as c
 from exercises.increment_string import increment_string
 from exercises.summation import summation
 from exercises.intro_bites_08_by_PyBites import BeltStats, ninja_belts, get_total_points
@@ -58,3 +59,11 @@ def test_increment_string():
     assert increment_string("foobar99") == "foobar100"
     assert increment_string("foobar099") == "foobar100"
     assert increment_string("") == "1"
+
+
+#   test for calculating_with functions
+def test_calculating_with_functions():
+    assert c.seven(c.times(c.five())) == 35
+    assert c.four(c.plus(c.nine())) == 13
+    assert c.eight(c.minus(c.three())) == 5
+    assert c.six(c.divided_by(c.two())) == 3
