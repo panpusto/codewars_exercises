@@ -1,6 +1,7 @@
 import pytest
 
 from exercises import calculating_with_functions as c
+from exercises.count_the_divisors_of_a_number import divisors
 from exercises.increment_string import increment_string
 from exercises.summation import summation
 from exercises.intro_bites_08_by_PyBites import BeltStats, ninja_belts, get_total_points
@@ -67,3 +68,13 @@ def test_calculating_with_functions():
     assert c.four(c.plus(c.nine())) == 13
     assert c.eight(c.minus(c.three())) == 5
     assert c.six(c.divided_by(c.two())) == 3
+
+
+#   test for_count_the_divisors_of_a_number.py
+def test_divisors():
+    assert divisors(1) == 1
+    assert divisors(4) == 3
+    assert divisors(5) == 2
+    assert divisors(12) == 6
+    assert divisors(30) == 8
+    assert divisors(4096) == 13
